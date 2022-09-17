@@ -3,7 +3,7 @@ class betterDJS {
     constructor(client) {
         this.client = client;
     };
-    async createEmbed(interaction, preDefinedEmbed) {
+    async createEmbed(interaction, preDefinedEmbed, ephemeral=true) {
         let bool = 1;
         let embed = (preDefinedEmbed) ? preDefinedEmbed : new MessageEmbed()
             .setAuthor({ name: "Embed Builder" })
@@ -90,7 +90,7 @@ class betterDJS {
         )
         let field;
         let buttons = [row1, row2, row3];
-        interaction.reply({ embeds: [embed], components: buttons, ephemeral: true });
+        interaction.reply({ embeds: [embed], components: buttons, ephemeral });
         const filter = click => click.user.id === interaction.member.id;
         const wordFilter = rep => { return rep.author.id === interaction.member.id };
         const collecter = interaction.channel.createMessageComponentCollector({ filter, time: 900000 });
